@@ -25,7 +25,7 @@ func NewClient(endpoint string) *Client {
 }
 
 func (c *Client) connect(ctx context.Context) (*grpc.ClientConn, error) {
-	return grpc.DialContext(ctx, c.Endpoint)
+	return grpc.DialContext(ctx, c.Endpoint, grpc.WithInsecure())
 }
 
 func (c *Client) ValidateUserPassword(ctx context.Context, in *ValidateUserRequest, opts ...grpc.CallOption) (out *ValidateUserReply, err error) {
