@@ -484,7 +484,7 @@ func NewAccountClient(cc *grpc.ClientConn) AccountClient {
 
 func (c *accountClient) ValidateUserPassword(ctx context.Context, in *ValidateUserRequest, opts ...grpc.CallOption) (*ValidateUserReply, error) {
 	out := new(ValidateUserReply)
-	err := grpc.Invoke(ctx, "/account.Account/validateUserPassword", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/account.Account/validateUserPassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -493,7 +493,7 @@ func (c *accountClient) ValidateUserPassword(ctx context.Context, in *ValidateUs
 
 func (c *accountClient) GetUserInfo(ctx context.Context, in *GetUserInfoRequest, opts ...grpc.CallOption) (*GetUserInfoReply, error) {
 	out := new(GetUserInfoReply)
-	err := grpc.Invoke(ctx, "/account.Account/getUserInfo", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/account.Account/getUserInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -502,7 +502,7 @@ func (c *accountClient) GetUserInfo(ctx context.Context, in *GetUserInfoRequest,
 
 func (c *accountClient) GetTokenInfo(ctx context.Context, in *GetTokenInfoRequest, opts ...grpc.CallOption) (*GetTokenInfoReply, error) {
 	out := new(GetTokenInfoReply)
-	err := grpc.Invoke(ctx, "/account.Account/getTokenInfo", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/account.Account/getTokenInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
