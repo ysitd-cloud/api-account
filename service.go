@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-//go:generate protoc -I . --gogo_out=plugins=grpc:. ./service.proto
+//go:generate protoc -I . -I vendor --gogo_out=plugins=grpc:. ./service.proto
 
 type Client struct {
 	Endpoint string

@@ -7,6 +7,14 @@ option java_outer_classname = "AccountProto";
 package account;
 
 import "google/protobuf/timestamp.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.equal_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.populate_all) = true;
+option (gogoproto.testgen_all) = true;
 
 message User {
     string username = 1;
@@ -22,7 +30,7 @@ message Service {
 message Token {
     User issuer = 1;
     Service audience = 2;
-    google.protobuf.Timestamp expire = 3;
+    google.protobuf.Timestamp expire = 3 [(gogoproto.stdtime) = true];
     repeated string scopes = 4;
 }
 
